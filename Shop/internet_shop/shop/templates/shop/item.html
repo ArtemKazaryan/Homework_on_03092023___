@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>{{ item.name }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+        <h1>{{ item.name }}</h1>
+        <a href="#">
+            <img src="{{ item.image.url }}" alt="{{ item.name }}" width="200" height="200"><br>
+        </a>
+        Цена: {{ item.price }} руб.<br>
+        <form action="/buy/{{ item.id }}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" value="Купить">
+        </form>
+
+
+</body>
+</html>
+
+</body>
+</html>

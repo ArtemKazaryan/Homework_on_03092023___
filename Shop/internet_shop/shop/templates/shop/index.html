@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<h1 style="text-align: center; background-color: red;">Интернет-магазин</h1>
+<body style="margin-left: auto; margin-right: auto;">
+
+    <h2 style="text-align: center; background-color: yellow;" >Товары:</h2>
+    <ul>
+        {% for item in items %}
+            <li>
+                <div class="bg"  style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-left: 350px; margin-top: 40px; width: 800px">
+                    <a href="{{ item.image.url }}"><img  class="menu" src="{{ item.image.url }}" alt="{{ item.name }}" width="100" height="100"></a><br>
+                    {{ item.name }} - {{ item.price }} руб.<br>
+                    <form action="/buy/{{ item.id }}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input style="background-color: green; color: white; width: 200px" type="submit" value="Купить">
+                    </form>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+</body>
+</html>
